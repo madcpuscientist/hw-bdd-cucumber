@@ -22,6 +22,13 @@ Background: movies have been added to database
   And  I am on the RottenPotatoes home page
 
 Scenario: restrict to movies with 'PG' or 'R' ratings
+  And I check 'PG' checkbox 
+  And I check 'R' checkbox
+  And I uncheck 'G' checkbox
+  And I uncheck 'PG-13' checkbox
+  And I hit "submit"
+  Then I should see the following movies : ["The Incredibles", "Raiders of the Lost Ark", "The Terminator", "When Harry Met Sally", "Amelie"]
+  Then I should not see the following movies: ["Aladdin", "2001: A Space Odyssey", "Chocolat", "The Help"]
   # enter step(s) to check the 'PG' and 'R' checkboxes
   # enter step(s) to uncheck all other checkboxes
   # enter step to "submit" the search form on the homepage
