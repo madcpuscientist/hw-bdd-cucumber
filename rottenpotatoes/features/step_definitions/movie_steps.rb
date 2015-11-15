@@ -2,7 +2,7 @@
 
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
-    @movie = movie.create!(movie)
+    Movie.create!({ :title => movie['title'], :rating => movie['rating'], :release_date => movie['release_date'] })
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
   end
@@ -17,7 +17,7 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  page.body is the entire content of the page as a string.
   first_position = page.body.index(e1)
   second_position = page.body.index(e2)
-  assert first_position < second_position
+  assert first_position.should < second_position
   
   #fail "Unimplemented"
 end

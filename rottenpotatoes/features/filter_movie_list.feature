@@ -28,22 +28,24 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   # enter step(s) to uncheck all other checkboxes
   And I uncheck "ratings_PG-13"
   And I uncheck "ratings_G"
+  And I uncheck "ratings_NC-17"
   # enter step to "submit" the search form on the homepage
   And I press "ratings_submit"
   # enter step(s) to ensure that PG and R movies are visible
-  Then I should see "The Incredibles"
-  And I should see "The Terminator"
+  Then I should not see movies with titles: Aladdin, The Help, Chocolat, 2001: A Space Odyssey, Chicken Run
+  #Then I should see "The Incredibles"
+  #And I should see "The Terminator"
   # enter step(s) to ensure that other movies are not visible
-  Then I should not see "Chicken Run"
-  And I should not see "The Help"
+  #Then I should not see "Chicken Run"
+  And I should see movies with titles: The Terminator, When Harry Met Sally, Amelie, The Incredibles, Raiders of the Lost Ark
 
 Scenario: all ratings selected
   # see assignment
   #When I check the following ratings: "PG, G, R"
   #And I press "ratings_submit"
   #Then I should see all the movies
-  Given I check the following ratings: PG, G, R
+  Given I check the following ratings: PG, G, R, PG-13, NC-17
   And I press "ratings_submit"
-  Then I should see all of the movies
+  Then I should see all the movies
 
 
