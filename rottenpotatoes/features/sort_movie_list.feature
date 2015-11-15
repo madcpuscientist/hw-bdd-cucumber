@@ -27,8 +27,7 @@ Scenario: sort movies alphabetically
   And I should see "Aladdin" before "Amelie"
 
 Scenario: sort movies in increasing order of release date
-  When I follow "Release Date"
-  Then I should see "2001: A Space Odyssey" before "The Terminator" 
-  And I should see "The Terminator" before "Aladdin"
+  When I follow "Release Date" 
+  Then I should see "When Harry Met Sally" before "The Incredible"
   And I should see "Aladdin" before "Amelie"
   # your steps here
